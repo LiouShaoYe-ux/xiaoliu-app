@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>小刘电子APP - 官方下载页</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234CAF50'/%3E%3Ctext x='32' y='44' font-size='36' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E刘%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --green:#4CAF50;
+    --green-dark:#388E3C;
+    --ink:#1F2933;
+    --sub:#6B7A8D;
+    --bg:#F4F7F5;
+    --card:#FFFFFF;
+    --line:#E4EAE6;
+    --radius:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:28px 20px 48px;}
+
+  /* ===== 顶部横幅 ===== */
+  .banner{
+    background:linear-gradient(135deg,#43A047 0%,#66BB6A 100%);
+    border-radius:22px;
+    padding:28px 22px;
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(76,175,80,.25);
+  }
+  .banner::after{
+    content:"";
+    position:absolute;
+    right:-40px;top:-40px;
+    width:150px;height:150px;
+    border-radius:50%;
+    background:rgba(255,255,255,.10);
+  }
+  .banner::before{
+    content:"";
+    position:absolute;
+    right:30px;bottom:-60px;
+    width:120px;height:120px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+  }
+  .banner-top{display:flex;align-items:center;gap:14px;position:relative;z-index:1;}
+  .logo{
+    width:64px;height:64px;border-radius:16px;
+    box-shadow:0 4px 14px rgba(0,0,0,.18);
+    flex-shrink:0;
+  }
+  .banner h1{font-size:24px;font-weight:800;letter-spacing:.5px;}
+  .banner .slogan{margin-top:2px;font-size:14px;opacity:.92;}
+  .banner .ver{
+    display:inline-block;margin-top:14px;
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.35);
+    padding:4px 12px;border-radius:999px;
+    font-size:12.5px;position:relative;z-index:1;
+  }
+
+  /* ===== 下载卡 ===== */
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px;
+    margin-top:18px;
+  }
+  .card h2{font-size:17px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+  .card p{font-size:14px;color:var(--sub);}
+  .dl-btn{
+    display:block;width:100%;
+    background:var(--green);
+    color:#fff;
+    border:none;border-radius:14px;
+    padding:16px;
+    font-size:17px;font-weight:700;
+    cursor:pointer;
+    text-align:center;
+    text-decoration:none;
+    box-shadow:0 6px 18px rgba(76,175,80,.30);
+    transition:transform .12s ease, background .12s ease;
+  }
+  .dl-btn:active{transform:scale(.97);background:var(--green-dark);}
+  .dl-sub{text-align:center;font-size:12px;color:var(--sub);margin-top:10px;}
+  .note{
+    margin-top:14px;
+    background:#FFF8E1;
+    border:1px solid #FFE082;
+    border-radius:12px;
+    padding:12px 14px;
+    font-size:13px;
+    color:#8A6D00;
+  }
+  .config-tip{
+    margin-top:12px;
+    background:#E8F0FE;
+    border:1px solid #BBD5FB;
+    border-radius:12px;
+    padding:12px 14px;
+    font-size:12.5px;
+    color:#1A56A0;
+    display:none;
+  }
+
+  /* ===== 版本列表 ===== */
+  .ver-group-title{
+    margin-top:20px;
+    font-size:15px;
+    font-weight:700;
+    color:var(--ink);
+    padding:0 2px;
+  }
+  .ver-list{margin-top:10px;display:flex;flex-direction:column;gap:10px;}
+  .ver-item{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:14px 16px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .ver-info{flex:1;min-width:0;}
+  .ver-name{font-size:15px;font-weight:700;}
+  .ver-meta{font-size:12px;color:var(--sub);margin-top:2px;}
+  .ver-badge{
+    font-size:11px;
+    color:#fff;
+    background:var(--green);
+    padding:2px 8px;
+    border-radius:999px;
+    margin-left:6px;
+    vertical-align:1px;
+  }
+  .ver-badge.latest{background:#E53935;}
+  .ver-btn{
+    flex-shrink:0;
+    background:var(--green);
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    padding:9px 16px;
+    font-size:13.5px;
+    font-weight:700;
+    cursor:pointer;
+    text-decoration:none;
+    transition:background .12s ease;
+  }
+  .ver-btn:active{background:var(--green-dark);}
+  .ver-btn.disabled{background:#B0BEC5;cursor:not-allowed;}
+
+  /* ===== 功能亮点 ===== */
+  .feat-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-top:6px;
+  }
+  .feat{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:14px;
+    display:flex;gap:10px;align-items:flex-start;
+  }
+  .feat svg{width:20px;height:20px;flex-shrink:0;margin-top:2px;}
+  .feat b{font-size:14px;display:block;line-height:1.4;}
+  .feat span{font-size:12px;color:var(--sub);}
+
+  /* ===== 安装说明 ===== */
+  ol.steps{margin:8px 0 0 20px;}
+  ol.steps li{font-size:14px;color:var(--ink);padding:5px 0;}
+  ol.steps li b{color:var(--green-dark);}
+
+  /* ===== 底部 ===== */
+  .footer{
+    text-align:center;
+    margin-top:26px;
+    font-size:12.5px;
+    color:#9AA8B5;
+    line-height:2;
+  }
+
+  @media (min-width:768px){
+    .wrap{max-width:640px;padding-top:40px;}
+    .banner{padding:36px 32px;}
+    .feat-grid{grid-template-columns:repeat(3,1fr);}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== 顶部横幅 ===== -->
+  <div class="banner">
+    <div class="banner-top">
+      <img class="logo" src="assets/icon.png" alt="小刘电子APP 图标">
+      <div>
+        <h1>小刘电子APP</h1>
+        <p class="slogan">快捷工具 · 让生活更简单</p>
+      </div>
+    </div>
+    <div class="ver">最新版本：V3.59.006</div>
+  </div>
+
+  <!-- ===== 最新版下载卡 ===== -->
+  <div class="card">
+    <h2>下载最新版</h2>
+    <p>推荐安装最新稳定版，功能最全、体验最好。</p>
+    <a class="dl-btn" id="latestBtn"
+       href="apk/小刘电子APP_v3.59.006.apk"
+       download>下载 V3.59.006（最新）</a>
+    <p class="dl-sub">APK 文件 · 约 1.2 MB · Android 5.0 及以上</p>
+    <div class="note">
+      安装时如提示「未知来源」，请在设置中允许安装此应用。本软件完全免费，如有人向你收费，说明你被骗了。
+    </div>
+    <div class="config-tip" id="configTip"></div>
+  </div>
+
+  <!-- ===== 全部版本 ===== -->
+  <div class="card">
+    <h2>全部历史版本</h2>
+    <p>从 v3.59.1 到 v3.59.006 的完整版本记录，均可下载。</p>
+    <div class="ver-group-title">V3.59.1 系列（早期迭代）</div>
+    <div class="ver-list" id="v31List"></div>
+    <div class="ver-group-title">V3.59.00x 系列</div>
+    <div class="ver-list" id="v3xxList"></div>
+  </div>
+
+  <!-- ===== 功能亮点 ===== -->
+  <div class="card">
+    <h2>功能亮点</h2>
+    <div class="feat-grid">
+      <div class="feat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/></svg>
+        <div><b>快捷权限</b><span>WiFi、蓝牙、定位等一键直达</span></div>
+      </div>
+      <div class="feat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <div><b>密码本</b><span>账号密码本地加密保存</span></div>
+      </div>
+      <div class="feat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <div><b>实用小工具</b><span>二维码、倒计时、剪贴板</span></div>
+      </div>
+      <div class="feat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#9C27B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6"/><path d="M15 2v6"/><path d="M5 8h14v3a7 7 0 01-14 0z"/><path d="M12 18v4"/><path d="M8 22h8"/></svg>
+        <div><b>创客工具</b><span>进制转换、局域网、蓝牙串口</span></div>
+      </div>
+      <div class="feat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#E53935" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/><path d="M19 15l.7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7z"/></svg>
+        <div><b>趣味整活</b><span>恶搞罚单、骰子、隐藏彩蛋</span></div>
+      </div>
+      <div class="feat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#00BCD4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4"/><path d="M12 19v4"/><path d="M4.2 4.2l2.8 2.8"/><path d="M17 17l2.8 2.8"/><path d="M1 12h4"/><path d="M19 12h4"/><path d="M4.2 19.8L7 17"/><path d="M17 7l2.8-2.8"/></svg>
+        <div><b>深色模式</b><span>护眼深色主题随心切换</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 安装说明 ===== -->
+  <div class="card">
+    <h2>安装说明</h2>
+    <ol class="steps">
+      <li>选择上方版本，点击<b>下载</b>按钮下载 APK 文件</li>
+      <li>打开文件，系统提示「未知来源」时选择<b>允许</b></li>
+      <li>按提示点击<b>安装</b>，完成后即可打开使用</li>
+    </ol>
+  </div>
+
+  <!-- ===== 底部 ===== -->
+  <div class="footer">
+    小刘电子工作室 · 出品<br>
+    完全免费 · 无广告 · 让生活更简单<br>
+    遇到问题或建议，欢迎反馈
+  </div>
+</div>
+
+<script>
+  // ===== 版本数据（与 apk/ 目录文件名一一对应）=====
+  var V31 = [
+    {file:"小刘电子APP_v3.59.1_阶段1.apk", name:"V3.59.1 阶段1", size:"37 KB", desc:"最早版本"},
+    {file:"小刘电子APP_v3.59.1_阶段2.apk", name:"V3.59.1 阶段2", size:"605 KB", desc:"功能迭代"},
+    {file:"小刘电子APP_v3.59.1_阶段3.apk", name:"V3.59.1 阶段3", size:"605 KB", desc:"功能迭代"},
+    {file:"小刘电子APP_v3.59.1_阶段4.apk", name:"V3.59.1 阶段4", size:"613 KB", desc:"功能迭代"},
+    {file:"小刘电子APP_v3.59.1_阶段5.apk", name:"V3.59.1 阶段5", size:"634 KB", desc:"功能迭代"},
+    {file:"小刘电子APP_v3.59.1_阶段6.apk", name:"V3.59.1 阶段6", size:"634 KB", desc:"v3.59.1 最终版"}
+  ];
+  var V3XX = [
+    {file:"小刘电子APP_v3.59.002.apk", name:"V3.59.002", size:"647 KB", desc:"娱乐弹窗返回主页 + 密码本真实功能"},
+    {file:"小刘电子APP_v3.59.003.apk", name:"V3.59.003", size:"651 KB", desc:"快捷生活折叠组 + 用户名文案"},
+    {file:"小刘电子APP_v3.59.004.apk", name:"V3.59.004", size:"1.14 MB", desc:"密码本导出锁 + 趣味整活 + 创客工具"},
+    {file:"小刘电子APP_v3.59.005.apk", name:"V3.59.005", size:"1.15 MB", desc:"密码拆分重置 + 罚单提示更新"},
+    {file:"小刘电子APP_v3.59.006.apk", name:"V3.59.006", size:"1.15 MB", desc:"启动协议 + 游客模式 + 反馈入口"}
+  ];
+
+  function makeItem(v, latest){
+    var row = document.createElement("div");
+    row.className = "ver-item";
+    var info = document.createElement("div");
+    info.className = "ver-info";
+    var nm = document.createElement("div");
+    nm.className = "ver-name";
+    nm.textContent = v.name;
+    if(latest){
+      var b = document.createElement("span");
+      b.className = "ver-badge latest";
+      b.textContent = "最新";
+      nm.appendChild(b);
+    }
+    var meta = document.createElement("div");
+    meta.className = "ver-meta";
+    meta.textContent = v.size + " · " + v.desc;
+    info.appendChild(nm);
+    info.appendChild(meta);
+    var btn = document.createElement("a");
+    btn.className = "ver-btn";
+    btn.textContent = "下载";
+    btn.href = "apk/" + encodeURIComponent(v.file);
+    btn.setAttribute("download", v.file);
+    row.appendChild(info);
+    row.appendChild(btn);
+    return row;
+  }
+
+  var l1 = document.getElementById("v31List");
+  for(var i=0;i<V31.length;i++) l1.appendChild(makeItem(V31[i], false));
+  var l2 = document.getElementById("v3xxList");
+  for(var j=0;j<V3XX.length;j++) l2.appendChild(makeItem(V3XX[j], j === V3XX.length-1));
+
+  // ===== 配置检查：若 APK 文件未随页面一起部署，提示用户 =====
+  var latestBtn = document.getElementById("latestBtn");
+  latestBtn.addEventListener("click", function(e){
+    var tip = document.getElementById("configTip");
+    tip.style.display = "block";
+    tip.textContent = "提示：请确认 apk/ 文件夹已随本页面一起上传到 GitHub，否则下载链接会 404。";
+  });
+</script>
+</body>
+</html>
