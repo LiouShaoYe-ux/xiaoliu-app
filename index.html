@@ -65,7 +65,10 @@
     border:1px solid rgba(255,255,255,.35);
     padding:4px 12px;border-radius:999px;
     font-size:12.5px;position:relative;z-index:1;
+    cursor:pointer;
+    transition:background .15s ease;
   }
+  .banner .ver:active{background:rgba(255,255,255,.32);}
 
   /* ===== 下载卡 ===== */
   .card{
@@ -100,16 +103,6 @@
     padding:12px 14px;
     font-size:13px;
     color:#8A6D00;
-  }
-  .config-tip{
-    margin-top:12px;
-    background:#E8F0FE;
-    border:1px solid #BBD5FB;
-    border-radius:12px;
-    padding:12px 14px;
-    font-size:12.5px;
-    color:#1A56A0;
-    display:none;
   }
 
   /* ===== 版本列表 ===== */
@@ -210,7 +203,7 @@
         <p class="slogan">快捷工具 · 让生活更简单</p>
       </div>
     </div>
-    <div class="ver">最新版本：V3.59.006</div>
+    <div class="ver" id="verBadge" title="点击跳到最新版本下载">最新版本：V3.59.007</div>
   </div>
 
   <!-- ===== 最新版下载卡 ===== -->
@@ -218,19 +211,18 @@
     <h2>下载最新版</h2>
     <p>推荐安装最新稳定版，功能最全、体验最好。</p>
     <a class="dl-btn" id="latestBtn"
-       href="apk/小刘电子APP_v3.59.006.apk"
-       download>下载 V3.59.006（最新）</a>
+       href="apk/小刘电子APP_v3.59.007.apk"
+       download>下载 V3.59.007（最新）</a>
     <p class="dl-sub">APK 文件 · 约 1.2 MB · Android 5.0 及以上</p>
     <div class="note">
       安装时如提示「未知来源」，请在设置中允许安装此应用。本软件完全免费，如有人向你收费，说明你被骗了。
     </div>
-    <div class="config-tip" id="configTip"></div>
   </div>
 
   <!-- ===== 全部版本 ===== -->
   <div class="card">
     <h2>全部历史版本</h2>
-    <p>从 v3.59.1 到 v3.59.006 的完整版本记录，均可下载。</p>
+    <p>从 v3.59.1 到 v3.59.007 的完整版本记录，均可下载。</p>
     <div class="ver-group-title">V3.59.1 系列（早期迭代）</div>
     <div class="ver-list" id="v31List"></div>
     <div class="ver-group-title">V3.59.00x 系列</div>
@@ -301,7 +293,8 @@
     {file:"小刘电子APP_v3.59.003.apk", name:"V3.59.003", size:"651 KB", desc:"快捷生活折叠组 + 用户名文案"},
     {file:"小刘电子APP_v3.59.004.apk", name:"V3.59.004", size:"1.14 MB", desc:"密码本导出锁 + 趣味整活 + 创客工具"},
     {file:"小刘电子APP_v3.59.005.apk", name:"V3.59.005", size:"1.15 MB", desc:"密码拆分重置 + 罚单提示更新"},
-    {file:"小刘电子APP_v3.59.006.apk", name:"V3.59.006", size:"1.15 MB", desc:"启动协议 + 游客模式 + 反馈入口"}
+    {file:"小刘电子APP_v3.59.006.apk", name:"V3.59.006", size:"1.15 MB", desc:"启动协议 + 游客模式 + 反馈入口"},
+    {file:"小刘电子APP_v3.59.007.apk", name:"V3.59.007", size:"1.20 MB", desc:"账号登录 + 云端聊天 + 邮箱验证码 · 正式版"}
   ];
 
   function makeItem(v, latest){
@@ -313,6 +306,7 @@
     nm.className = "ver-name";
     nm.textContent = v.name;
     if(latest){
+      row.id = "latestItem";
       var b = document.createElement("span");
       b.className = "ver-badge latest";
       b.textContent = "最新";
@@ -338,13 +332,14 @@
   var l2 = document.getElementById("v3xxList");
   for(var j=0;j<V3XX.length;j++) l2.appendChild(makeItem(V3XX[j], j === V3XX.length-1));
 
-  // ===== 配置检查：若 APK 文件未随页面一起部署，提示用户 =====
-  var latestBtn = document.getElementById("latestBtn");
-  latestBtn.addEventListener("click", function(e){
-    var tip = document.getElementById("configTip");
-    tip.style.display = "block";
-    tip.textContent = "提示：请确认 apk/ 文件夹已随本页面一起上传到 GitHub，否则下载链接会 404。";
-  });
+  // ===== 顶部「最新版本」胶囊：点击滚动到最新版下载位置 =====
+  var verBadge = document.getElementById("verBadge");
+  if(verBadge){
+    verBadge.addEventListener("click", function(){
+      var it = document.getElementById("latestItem");
+      if(it){ it.scrollIntoView({behavior:"smooth", block:"center"}); }
+    });
+  }
 </script>
 </body>
 </html>
