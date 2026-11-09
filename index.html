@@ -211,7 +211,7 @@
     <h2>下载最新版</h2>
     <p>推荐安装最新稳定版，功能最全、体验最好。</p>
     <a class="dl-btn" id="latestBtn"
-       href="https://aka.doubaocdn.com/s/070i4xE8TI"
+       href="https://aka.doubaocdn.com/s/cNTm4oxneC"
        target="_blank" rel="noopener">下载 V3.59.011（最新）</a>
     <p class="dl-sub">APK 文件 · 约 1.2 MB · Android 5.0 及以上</p>
     <div class="note">
@@ -222,11 +222,9 @@
   <!-- ===== 全部版本 ===== -->
   <div class="card">
     <h2>全部历史版本</h2>
-    <p>从 v3.59.1 到 v3.59.011 的完整版本记录，均可下载。</p>
+    <p>当前提供最新正式版下载。</p>
     <div class="ver-group-title">正式版本（最新在最上面）</div>
     <div class="ver-list" id="v3xxList"></div>
-    <div class="ver-group-title">V3.59.1 系列（早期迭代，最新在最上面）</div>
-    <div class="ver-list" id="v31List"></div>
   </div>
 
   <!-- ===== 功能亮点 ===== -->
@@ -280,23 +278,10 @@
 
 <script>
   // ===== 版本数据（与 apk/ 目录文件名一一对应）=====
-  var V31 = [
-    {file:"小刘电子APP_v3.59.1_阶段6.apk", name:"V3.59.1 阶段6", size:"634 KB", desc:"v3.59.1 最终版"},
-    {file:"小刘电子APP_v3.59.1_阶段5.apk", name:"V3.59.1 阶段5", size:"634 KB", desc:"功能迭代"},
-    {file:"小刘电子APP_v3.59.1_阶段4.apk", name:"V3.59.1 阶段4", size:"613 KB", desc:"功能迭代"},
-    {file:"小刘电子APP_v3.59.1_阶段3.apk", name:"V3.59.1 阶段3", size:"605 KB", desc:"功能迭代"},
-    {file:"小刘电子APP_v3.59.1_阶段2.apk", name:"V3.59.1 阶段2", size:"605 KB", desc:"功能迭代"},
-    {file:"小刘电子APP_v3.59.1_阶段1.apk", name:"V3.59.1 阶段1", size:"37 KB", desc:"最早版本"}
-  ];
+  var V31 = [];
   var V3XX = [
-    {file:"小刘电子APP_v3.59.011.apk", url:"https://aka.doubaocdn.com/s/070i4xE8TI", name:"V3.59.011", size:"1.21 MB", desc:"新消息通知 + 内置聊天更稳"},
-    {file:"小刘电子APP_v3.59.008.apk", url:"https://aka.doubaocdn.com/s/EVSp7f4bA6", name:"V3.59.008", size:"1.20 MB", desc:"修复云端密钥失效 · 登录与邮箱验证码恢复正常"},
-    {file:"小刘电子通讯_v1.0.1.apk", url:"https://aka.doubaocdn.com/s/sP3oStteFU", name:"小刘电子通讯（手机版）", size:"662 KB", desc:"手机端独立聊天 · 与主APP互通 · 新消息通知", tag:"手机版"},
-    {file:"小刘电子APP_v3.59.006.apk", name:"V3.59.006", size:"1.15 MB", desc:"启动协议 + 游客模式 + 反馈入口"},
-    {file:"小刘电子APP_v3.59.005.apk", name:"V3.59.005", size:"1.15 MB", desc:"密码拆分重置 + 罚单提示更新"},
-    {file:"小刘电子APP_v3.59.004.apk", name:"V3.59.004", size:"1.14 MB", desc:"密码本导出锁 + 趣味整活 + 创客工具"},
-    {file:"小刘电子APP_v3.59.003.apk", name:"V3.59.003", size:"651 KB", desc:"快捷生活折叠组 + 用户名文案"},
-    {file:"小刘电子APP_v3.59.002.apk", name:"V3.59.002", size:"647 KB", desc:"娱乐弹窗返回主页 + 密码本真实功能"}
+    {file:"小刘电子APP_v3.59.011.apk", url:"https://aka.doubaocdn.com/s/cNTm4oxneC", name:"V3.59.011", size:"1.21 MB", desc:"新消息通知 + 内置聊天更稳"},
+    {file:"小刘电子通讯_v1.0.1.apk", url:"https://aka.doubaocdn.com/s/FpFbGQKUxU", name:"小刘电子通讯（手机版）", size:"662 KB", desc:"手机端独立聊天 · 与主APP互通 · 新消息通知", tag:"手机版"}
   ];
 
   function makeItem(v, latest){
@@ -341,8 +326,6 @@
     return row;
   }
 
-  var l1 = document.getElementById("v31List");
-  for(var i=0;i<V31.length;i++) l1.appendChild(makeItem(V31[i], i === 0));
   var l2 = document.getElementById("v3xxList");
   for(var j=0;j<V3XX.length;j++) l2.appendChild(makeItem(V3XX[j], j === 0));
 
