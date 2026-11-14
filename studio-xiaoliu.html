@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>小刘电子工作室 · 官网</title>
+<link rel="icon" href="assets/icon.png">
+<style>
+  :root{
+    --brand:#E8820C; --brand-dk:#C96F08; --ink:#1F2933; --sub:#6B7A8D;
+    --bg:#FBF6EF; --card:#FFFFFF; --line:#F0E4D2; --radius:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;}
+  .wrap{max-width:880px;margin:0 auto;padding:24px 20px 56px;}
+  .topbar{display:flex;align-items:center;gap:10px;font-size:13.5px;}
+  .topbar a{color:var(--brand-dk);text-decoration:none;}
+  .topbar .sep{color:var(--sub);}
+  .hero{background:linear-gradient(135deg,#F0921E 0%,#F7B23B 100%);border-radius:24px;padding:34px 26px;color:#fff;position:relative;overflow:hidden;margin-top:16px;box-shadow:0 12px 30px rgba(232,130,12,.25);}
+  .hero::after{content:"";position:absolute;right:-50px;top:-50px;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.10);}
+  .hero h1{font-size:25px;font-weight:800;letter-spacing:.5px;}
+  .hero .slogan{margin-top:6px;font-size:15px;opacity:.95;}
+  .hero .mission{margin-top:14px;max-width:560px;font-size:14px;opacity:.95;position:relative;z-index:1;}
+  .section{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-top:18px;}
+  .section h2{font-size:17px;font-weight:800;margin-bottom:10px;}
+  .section p{font-size:14px;color:var(--ink);}
+  .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px;}
+  @media (max-width:560px){.facts{grid-template-columns:1fr;}}
+  .fact{background:var(--bg);border-radius:14px;padding:14px;}
+  .fact .k{font-size:12px;color:var(--sub);}
+  .fact .v{font-size:14.5px;font-weight:700;margin-top:2px;}
+  .contact{display:flex;flex-direction:column;gap:8px;font-size:14px;}
+  .contact a{color:var(--brand-dk);text-decoration:none;}
+  .nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+  .nav a{font-size:13.5px;font-weight:700;color:var(--brand-dk);text-decoration:none;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:9px 14px;}
+  .foot{text-align:center;margin-top:28px;font-size:12.5px;color:#9AA8B5;line-height:2;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a href="index.html">品牌门户</a><span class="sep">/</span><span>小刘电子工作室</span>
+  </div>
+
+  <section class="hero">
+    <h1>小刘电子工作室</h1>
+    <div class="slogan">携手同行，共赴热爱</div>
+    <p class="mission">使命：让同行也能肩并肩，不再竞争。</p>
+  </section>
+
+  <section class="section">
+    <h2>关于工作室</h2>
+    <p>小刘电子工作室为个体工商户，聚焦创客工具、小程序与个人项目实践，面向同好与同行开放交流，主张彼此扶持、并肩成长，而不是相互竞争。</p>
+  </section>
+
+  <section class="section">
+    <h2>主体信息</h2>
+    <div class="facts">
+      <div class="fact"><div class="k">组织形式</div><div class="v">个体工商户</div></div>
+      <div class="fact"><div class="k">主理人</div><div class="v">刘恩畅</div></div>
+      <div class="fact"><div class="k">方向</div><div class="v">创客工具 · 小程序</div></div>
+      <div class="fact"><div class="k">交流主张</div><div class="v">同行并肩，彼此扶持</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>联系我们</h2>
+    <div class="contact">
+      <div>联系电话：<a href="tel:18504922422">18504922422</a></div>
+      <div>联系邮箱：<a href="mailto:18504922422@163.com">18504922422@163.com</a></div>
+    </div>
+  </section>
+
+  <nav class="nav">
+    <a href="index.html">返回门户</a>
+    <a href="company-maomao.html">猫猫电子科技有限公司</a>
+    <a href="company-maomao-im.html">猫猫电子科技（内蒙古）</a>
+    <a href="app.html">APP 下载</a>
+  </nav>
+
+  <footer class="foot">小刘电子工作室 · 个体工商户 · 出品</footer>
+</div>
+</body>
+</html>
